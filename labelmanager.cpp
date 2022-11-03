@@ -33,7 +33,7 @@ void LabelManager::createNewLabelsFile(QWidget *parent)
 
 void LabelManager::openExistingLabelsFile(QWidget *parent)
 {
-    std::ofstream fin;
+    std::ifstream fin;
     QString fileName = QFileDialog::getOpenFileName(parent,
                                                     QFileDialog::tr("Open label file"),
                                                     ".",
