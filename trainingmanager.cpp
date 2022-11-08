@@ -6,9 +6,6 @@
 TrainingManager::TrainingManager()
 {
     svm = cv::ml::SVM::create();
-//    svm->setType(cv::ml::SVM::C_SVC);
-//    svm->setKernel(cv::ml::SVM::LINEAR);
-//    svm->setTermCriteria(cv::TermCriteria(cv::TermCriteria::MAX_ITER, 100, 1e-6));
 }
 
 void TrainingManager::loadTrainingData(QWidget *parent)
@@ -33,12 +30,6 @@ void TrainingManager::loadTrainingData(QWidget *parent)
           -1); // only 1 response per line
     cv::Mat trainData = tdata->getTrainSamples();
     cv::Mat trainLabels = tdata->getTrainResponses();
-
-//    cv::Mat labels(trainLabels.rows, classCount, CV_32F, 0.0f); // all zero, initially
-//    for (int i = 0; i < trainLabels.rows; i++) {
-//            int id = (int)trainLabels.at<float>(i);
-//            labels.at<float>(i, id) = 1.0f;
-//    }
 
     trainLabels.convertTo(trainLabels, CV_32S);
 
@@ -75,10 +66,8 @@ void TrainingManager::loadTestingData(QWidget *parent)
 
 void TrainingManager::trainSVM()
 {
-    // svm->train(trainData, 0, labels);
     svm->trainAuto(trainData, 0, trainLabels);
     svm->save(QDate::currentDate().toString().toStdString() + ".svm");
-
 }
 
 float TrainingManager::testSVM()

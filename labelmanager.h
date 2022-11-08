@@ -26,6 +26,7 @@ private:
     int index = 0;
     int lastRows = 0;               // Used for checking if all images are the same size
     int lastCols = 0;               // Used for checking if all images are the same size
+    QString lastImagePath = ".";
     QVector<QString> imagePaths;
 };
 

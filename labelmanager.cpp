@@ -54,10 +54,11 @@ void LabelManager::loadImagePaths(QWidget *parent)
     std::ifstream fin;
     QStringList imagePaths = QFileDialog::getOpenFileNames(parent,
                                                         QFileDialog::tr("Open images for labeling"),
-                                                        ".",
+                                                        lastImagePath,
                                                         QFileDialog::tr("Images (*.tif *.tiff *.bmp *.jpg *.jpeg *.png *.raw)"));
     if(imagePaths.isEmpty())
         return;
+    lastImagePath = imagePaths[0];
 
     this->imagePaths.clear();
     index = 0;
