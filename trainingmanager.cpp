@@ -1,5 +1,5 @@
-#include <QDate>
 #include <fstream>
+#include <QDateTime>
 #include <QFileDialog>
 #include "trainingmanager.h"
 
@@ -67,7 +67,7 @@ void TrainingManager::loadTestingData(QWidget *parent)
 void TrainingManager::trainSVM()
 {
     svm->trainAuto(trainData, 0, trainLabels);
-    svm->save(QDate::currentDate().toString().toStdString() + ".svm");
+    svm->save(QDateTime::currentDateTime().toString().toStdString() + ".svm");
 }
 
 float TrainingManager::testSVM()
